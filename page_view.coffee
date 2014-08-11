@@ -14,10 +14,8 @@ class PageView extends Backbone.View
     @$('.category-entry-wrapper').html(@categoryEntryView.render())
 
   initDataEntry: =>
-    console.log 'initDataEntry'
-    console.log @categoryEntryView.harvestData()
-    # @dataEntryView = new DataEntryView
-    # @$('.data-entry-wrapper').html(@dataEntryView.render())
+    @dataEntryView = new DataEntryView
+    @$('.data-entry-wrapper').html(@dataEntryView.render(@categoryEntryView.harvestData()))
 
 
 module.exports = PageView

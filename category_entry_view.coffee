@@ -1,5 +1,6 @@
 Backbone = require('./backbone_custom.coffee')
 _ = require('underscore')
+$ = require('jquery')
 template = require('./category_entry_template.hbs')
 metricsItemTemplate = require('./metrics_item_template.hbs')
 
@@ -15,11 +16,12 @@ class CategoryEntryView extends Backbone.View
     @$('.metrics-items-wrapper').append(metricsItemTemplate())
 
   harvestData: ->
-    console.log 'hi'
-    teams = @$('.team-entry').val().split(',').strip()
-    metrics = _.map $('.metrics-item'), ($item) ->
+    teams = _.map @$('.team-entry').val()?.split(','), ((team) -> team.trim())
+    metrics = _.map $('.metric-item'), (item) ->
       metric = {}
-      metric[$item.find('.metric-type')] = $item.find('metric-categories').split(',').strip()
+      metric[$(item).find('.metric-type').val()] = _.map $(item).find('.metric-categories').val()?.split(','), ((cat) -> cat.trim())
+      metric
+    {teams: teams, metrics: metrics}
 
 
 module.exports = CategoryEntryView
