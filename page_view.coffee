@@ -1,14 +1,11 @@
-Marionette = require('backbone.marionette')
+Backbone = require('./backbone_custom.coffee')
+CategoryEntryView = require('./category_entry_view.coffee')
 
-CategoryEntryView = require('./category_entry_view')
+class PageView extends Backbone.View
+  el: 'body'
 
-class Page extends Marionette.LayoutView
-  template: template
+  render: ->
+    categoryEntryView = new CategoryEntryView
+    @$('.category-entry-wrapper').append(categoryEntryView.render())
 
-  regions:
-    'categoryEntryRegion': '.category-entry-wrapper'
-    'dataEntryRegion': '.data-entry-wrapper'
-    'graphsRegion': '.graphs-wrapper'
-
-  onShow: ->
-    @categoryEntryRegion.show(new CategoryEntryView)
+module.exports = PageView

@@ -1,19 +1,18 @@
-Marionette = require('backbone.marionette')
-template = require('./category_entry_template')
-metricsItemTemplate = require('./metrics_item_template')
+Backbone = require('./backbone_custom.coffee')
+template = require('./category_entry_template.hbs')
+metricsItemTemplate = require('./metrics_item_template.hbs')
 
-class CategoryEntryView extends Marionette.ItemView
-  template: template
-
-  ui: ->
-    addMetric: '.add-metric'
-    metricsItemsWrapper: '.metrics-items-wrapper'
-
+class CategoryEntryView extends Backbone.View
   events: ->
-    'click @ui.addMetric': 'appendMetricItem'
+    'click .add-metric': 'appendMetricItem'
 
-  appendMetricItem: ->
-    @ui.metricsItemsWrapper.append(metricsItemTemplate())
+  render: ->
+    @$el.append template()
+
+  appendMetricItem: (e)->
+    e.preventDefault()
+    console.log metricsItemTemplate()
+    @$('.metrics-items-wrapper').append(metricsItemTemplate())
 
 
 module.exports = CategoryEntryView

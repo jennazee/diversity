@@ -1,10 +1,6 @@
-Marionette = require('backbone.marionette')
-PageView = require('./page_view')
-
-App = new Marionette.Application()
-
-App.addInitializer ->
-  App.Page = new PageView app: App
+$ = require('jquery')
+PageView = require('./page_view.coffee')
 
 $(document).ready ->
-  App.start()
+  page = new PageView
+  page.render()
