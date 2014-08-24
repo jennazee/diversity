@@ -1,0 +1,17 @@
+<form>
+  {{#each teams}}
+    <fieldset name="{{this}}">
+      <legend>{{this}}</legend>
+      {{#each ../metrics}}
+      <fieldset name="{{type}}">
+        <legend>{{type}}</legend>
+        {{#each divisions}}
+          <label>{{this}}</label><input name="{{../../this}}.{{../type}}.{{this}}"></input>
+        {{/each}}
+      </fieldset>
+      {{/each}}
+    </fieldset>
+  {{/each}}
+</form>
+
+<div><a class="select-graph-data-btn" href="#">Select Data to Graph</a></div>
