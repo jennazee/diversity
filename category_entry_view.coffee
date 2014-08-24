@@ -16,12 +16,14 @@ class CategoryEntryView extends Backbone.View
     @$('.metrics-items-wrapper').append(metricsItemTemplate())
 
   harvestData: ->
-    teams = _.map @$('.team-entry').val()?.split(','), ((team) -> team.trim())
-    metrics = _.map $('.metric-item'), (item) ->
-      metric = {}
-      metric[$(item).find('.metric-type').val()] = _.map $(item).find('.metric-categories').val()?.split(','), ((cat) -> cat.trim())
-      metric
-    {teams: teams, metrics: metrics}
+    # teams = _.map @$('.team-entry').val()?.split(','), ((team) -> team.trim())
+    # metrics = _.map $('.metric-item'), (item) ->
+    #   metric = {}
+    #   metric.type = $(item).find('.metric-type').val()
+    #   metric.divisions = _.map $(item).find('.metric-categories').val()?.split(','), ((cat) -> cat.trim())
+    #   metric
+    # {teams: teams, metrics: metrics}
+    {teams: ['eng', 'marketing'], metrics: [{type: 'gender', divisions: ['m', 'f']}, {type: 'ethnicity', divisions: ['white', 'black']}]}
 
 
 module.exports = CategoryEntryView
