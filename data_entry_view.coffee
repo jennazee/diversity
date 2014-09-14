@@ -8,18 +8,21 @@ class DataEntryView extends Backbone.View
     'click a': 'harvestData'
 
   render: (data) ->
-    @$el.append template(data)
+
+    if data.teams or data.otherGroupings
+      @$el.html template(data)
+    else
+      @$el.html '<p>You need to enter some data for me to graph!</p>'
 
   harvestData: ->
     a = $('form').serializeArray()
-    console.log a
     _.reduce a, ((acc, el) ->
       splits = el.name.split('.')
       if not acc[splits[0]]
         acc[splits[0]] = {}
       if not acc[splits[0]][splits[1]]
         acc[splits[0]][splits[1]] = {}
-      acc[splits[0]][splits[1]][splits[2]] = el.value
+      acc[splits[0]][splits[1]][splits[2]] = parseInt el.value
       acc
     ), {}
 

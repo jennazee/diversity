@@ -9,6 +9,9 @@ class PageView extends Backbone.View
 
   initialize: ->
     @categoryEntryView = new CategoryEntryView
+    @metrics = ['gender', 'ethnicity']
+    @genders = ['male', 'female', 'other']
+    @ethnicities = ['white', 'african-american', 'asian', 'hispanic', 'other']
 
   events: ->
     'click .start-data-button': 'initDataEntry'
@@ -18,11 +21,18 @@ class PageView extends Backbone.View
 
   initDataEntry: =>
     @dataEntryView = new DataEntryView
-    @$('.data-entry-wrapper').html(@dataEntryView.render(@categoryEntryView.harvestData()))
+    data = @dataEntryView.render(@categoryEntryView.harvestData())
+    @teams = data.teams
+    @otherGroupings = data.otherGroupings
+    @$('.data-entry-wrapper').html(data)
     $('.select-graph-data-btn').on 'click', @initGraphBuilder
 
   initGraphBuilder: =>
     @graphBuilderView = new GraphBuilderView
+      metrics: @metrics
+      genders: @genders
+      ethnicities: @ethnicities
+
     $('.graphs-wrapper').html(@graphBuilderView.render(@dataEntryView.harvestData()))
 
 module.exports = PageView
