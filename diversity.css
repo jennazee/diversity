@@ -68,3 +68,25 @@ legend {
 label {
   padding-right: 3px;
 }
+
+.inline-block {
+  display: inline-block;
+}
+
+.bar-inline-block {
+  margin-left: -4px;
+}
+
+.bar {
+  width: 75%;
+}
+
+.legend-square {
+  height: 10px;
+  width: 10px;
+  margin-right: 3px;
+}
+
+.title-case {
+  text-transform: capitalize;
+}

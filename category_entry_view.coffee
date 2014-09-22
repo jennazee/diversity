@@ -16,8 +16,8 @@ class CategoryEntryView extends Backbone.View
     @$('.metrics-items-wrapper').append(metricsItemTemplate())
 
   harvestData: ->
+    metrics: _.map $('.category-entry').serializeArray(), ((el) -> el.name)
     teams: if @$('.team-entry').val().length then _.map @$('.team-entry').val().split(','), ((team) -> team.trim())
     otherGroupings: if @$('.other-grouping-entry').val().length then _.map @$('.other-grouping-entry').val().split(','), ((group) -> group.trim())
-
 
 module.exports = CategoryEntryView

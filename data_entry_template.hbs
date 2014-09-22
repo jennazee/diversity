@@ -1,40 +1,31 @@
-<form>
+<h2>Now, enter the number of people in each grouping that fall into each category</h2>
+<form class="whole-data-entry">
   {{#each teams}}
     <fieldset class="outer footroom" name="{{this}}">
-      <legend><h3>{{this}}</h3></legend>
-      <fieldset name="gender">
-        <legend>Gender:</legend>
-        <label>Male:</label><input name="{{this}}.gender.male"></input>
-        <label>Female:</label><input name="{{this}}.gender.female"></input>
-        {{!-- <label>Other</label><input name="{{this}}.gender.other"></input> --}}
-      </fieldset>
-      <fieldset name="ethnicity">
-        <legend>Ethnicity:</legend>
-        <label>Caucasian:</label><input name="{{this}}.ethnicity.caucasian"></input>
-        <label>African-American:</label><input name="{{this}}.ethnicity.african-american"></input>
-        <label>Hispanic:</label><input name="{{this}}.ethnicity.hispanic"></input>
-        <label>Asian:</label><input name="{{this}}.ethnicity.asian"></input>
-        <label>Other:</label><input name="{{this}}.ethnicity.other"></input>
-      </fieldset>
+      <legend><h3 class="title-case">{{this}}</h3></legend>
+      {{#each ../metricsSkeleton}}
+        <fieldset name="{{this.name}}">
+          <legend class="title-case">{{this.name_display}}:</legend>
+          {{#each this.options}}
+            <label class="title-case">{{this}}:</label><input name="{{../../this}}.{{../this.name}}.{{this}}"></input>
+          {{/each}}
+        </fieldset>
+      {{/each}}
     </fieldset>
   {{/each}}
+</form>
+<form class="aux-data-entry">
   {{#each otherGroupings}}
     <fieldset class="outer footroom" name="{{this}}">
-      <legend><h3>{{this}}</h3></legend>
-      <fieldset name="gender">
-        <legend>Gender:</legend>
-        <label>Male:</label><input name="{{this}}.gender.male"></input>
-        <label>Female:</label><input name="{{this}}.gender.female"></input>
-        <label>Other:</label><input name="{{this}}.gender.other"></input>
-      </fieldset>
-      <fieldset name="ethnicity">
-        <legend>Ethnicity:</legend>
-        <label>Caucasian:</label><input name="{{this}}.ethnicity.caucasian"></input>
-        <label>African-American:</label><input name="{{this}}.ethnicity.african-american"></input>
-        <label>Hispanic:</label><input name="{{this}}.ethnicity.hispanic"></input>
-        <label>Asian:</label><input name="{{this}}.ethnicity.asian"></input>
-        <label>Other:</label><input name="{{this}}.ethnicity.other"></input>
-      </fieldset>
+      <legend><h3 class="title-case">{{this}}</h3></legend>
+      {{#each ../metricsSkeleton}}
+        <fieldset name="{{this.name}}">
+          <legend class="title-case">{{this.name_display}}:</legend>
+          {{#each this.options}}
+            <label class="title-case">{{this}}:</label><input name="{{../../this}}.{{../this.name}}.{{this}}"></input>
+          {{/each}}
+        </fieldset>
+      {{/each}}
     </fieldset>
   {{/each}}
 </form>

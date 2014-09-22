@@ -1,0 +1,13 @@
+<div class="whole-graph-wrapper {{metric}}">
+  <h3 class="title-case">{{metric}}</h3>
+  <div class="bar">
+    {{#each data}}
+      <div class="inline-block bar-inline-block" style="width: {{this.percent}}%; height: 20px; background-color: {{this.color}};"></div>
+    {{/each}}
+  </div>
+  <div class="legend">
+    {{#each data}}
+      <div class="inline-block legend-square" style="background-color: {{this.color}};"></div><span>{{this.option}}</span>
+    {{/each}}
+  </div>
+</div>

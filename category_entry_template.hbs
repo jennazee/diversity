@@ -1,7 +1,19 @@
 <h2>First, let's decide what data you want to be asked about...</h2>
-<div class="headroom footroom">
-  <label>Enter the "teams" within your organization, comma-separated. These shouldn't overlap. (i.e. engineering, sales, marketing)</label><textarea class="team-entry"></textarea>
-</div>
-<div class="headroom footroom">
-  <label>Any other groups you'd like to include? (i.e. management)</label><textarea class="other-grouping-entry"></textarea>
-</div>
+<form class="category-entry">
+  <div class="headroom footroom">
+    <label>Enter the "teams" within your organization, comma-separated. These shouldn't overlap. (i.e. engineering, sales, marketing)</label><textarea class="team-entry"></textarea>
+  </div>
+  <div class="headroom footroom">
+    <label>Any other groups you'd like to include? (i.e. management)</label><textarea class="other-grouping-entry"></textarea>
+  </div>
+  <div class="headroom footroom">
+    <p>Which of the following would you like graphs for?</p>
+    <fieldset class="metrics">
+      <input class="inline-block" type="checkbox" name="gender"></input><label>Gender</label>
+      <input class="inline-block" type="checkbox" name="ethnicity"></input><label>Ethnicity</label>
+      <input class="inline-block" type="checkbox" name="sexual_orientation"></input><label>Sexual Orientation</label>
+      <input class="inline-block" type="checkbox" name="age"></input><label>Age</label>
+      <input class="inline-block" type="checkbox" name="education"></input><label>Education</label>
+    </fieldset>
+  </div>
+</form>

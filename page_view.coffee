@@ -21,18 +21,12 @@ class PageView extends Backbone.View
 
   initDataEntry: =>
     @dataEntryView = new DataEntryView
-    data = @dataEntryView.render(@categoryEntryView.harvestData())
-    @teams = data.teams
-    @otherGroupings = data.otherGroupings
-    @$('.data-entry-wrapper').html(data)
-    $('.select-graph-data-btn').on 'click', @initGraphBuilder
+    dataHtml = @dataEntryView.render(@categoryEntryView.harvestData())
+    @$('.data-entry-wrapper').html(dataHtml)
+    $('.select-graph-data-btn').on 'click', @initGraphs
 
-  initGraphBuilder: =>
+  initGraphs: =>
     @graphBuilderView = new GraphBuilderView
-      metrics: @metrics
-      genders: @genders
-      ethnicities: @ethnicities
-
     $('.graphs-wrapper').html(@graphBuilderView.render(@dataEntryView.harvestData()))
 
 module.exports = PageView
